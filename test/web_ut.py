@@ -9,10 +9,14 @@ from selenium.webdriver.chrome.options import Options
 
 
 class ISelenium(unittest.TestCase):
+    base_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+
     # 读入配置文件
     def get_config(self):
         config = configparser.ConfigParser()
-        config.read(os.path.join(os.environ['C:/Users/Administrator'], 'iselenium.ini'))
+        ini_file_path=os.path.join(self.base_path, 'iselenium.ini')
+
+        config.read(ini_file_path)
         return config
 
     def tearDown(self):
